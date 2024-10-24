@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 def get_matrix(n, m, value):                # объявляем функцию
     matrix = []                             # пустой список
     for i in range(n):                      # перебор строк
@@ -13,7 +12,6 @@ result3 = get_matrix(4, 2, 13)
 
 print(result1)                              # magic 1
 print(result2)                              # magic 2
-=======
 def get_matrix(n, m, value):                # объявляем функцию
     matrix = []                             # пустой список
     for i in range(n):                      # перебор строк
@@ -28,5 +26,4 @@ result3 = get_matrix(4, 2, 13)
 
 print(result1)                              # magic 1
 print(result2)                              # magic 2
->>>>>>> Stashed changes
 print(result3)                              # magic 3
