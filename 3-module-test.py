@@ -18,9 +18,9 @@ def calculate_structure_sum(*args) -> int:
 		elif isinstance(element, tuple):
 			counter += calculate_structure_sum(*element)
 		elif isinstance(element, dict):
-			counter += calculate_structure_sum(tuple(element.items()))
+			counter += calculate_structure_sum(*element.items())
 		elif isinstance(element, set):
-			counter += calculate_structure_sum(tuple(element))
+			counter += calculate_structure_sum(*element)
 	return counter
 
 
