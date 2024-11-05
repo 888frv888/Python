@@ -1,4 +1,4 @@
-def calculate_structure_sum(*args) -> int:
+def calculate_structure_sum(*args: int | str | list | tuple | dict | set ) -> int:
 	"""
 	!!!ВНИМАНИЕ РЕКУРСИЯ!!!
 	Функция принимает параметром аргумент, в виде хаотичной структуры данных,
@@ -38,7 +38,9 @@ data_structure = [
 
 ]
 
-
-if __name__ == '__main__':
+def main():
 	result: int = calculate_structure_sum(data_structure)
 	print(result)
+
+if __name__ == '__main__':
+	main()
