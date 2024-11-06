@@ -13,14 +13,10 @@ def calculate_structure_sum(*args: int | str | list | tuple | dict | set ) -> in
 			counter += element
 		elif isinstance(element, str):
 			counter += len(element)
-		elif isinstance(element, list):
-			counter += calculate_structure_sum(*element)
-		elif isinstance(element, tuple):
+		elif isinstance(element, list | tuple | set):
 			counter += calculate_structure_sum(*element)
 		elif isinstance(element, dict):
 			counter += calculate_structure_sum(*element.items())
-		elif isinstance(element, set):
-			counter += calculate_structure_sum(*element)
 	return counter
 
 
