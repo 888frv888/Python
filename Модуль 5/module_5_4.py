@@ -62,11 +62,13 @@ class House:
 	def __add__(self, other: object | int) -> object:
 		"""Метод складывет этажи здания с другим зданием) или с целым числом"""
 		if isinstance(other, House):
-			# self.number_of_floors += other.number_of_floors
-			return self.__class__(self.name, self.number_of_floors + other.number_of_floors)
+			self.number_of_floors += other.number_of_floors
+			return self
+			#return self.__class__(self.name, self.number_of_floors + other.number_of_floors)
 		elif isinstance(other, int):
-			# self.number_of_floors += other
-			return self.__class__(self.name, self.number_of_floors + other)
+			self.number_of_floors += other
+			return self
+			#return self.__class__(self.name, self.number_of_floors + other)
 		else:
 			raise TypeError("Должно быть целое число для сложения. Или объект класса House")
 
