@@ -53,6 +53,7 @@ class UrTube:
 		for user in self.users:
 			if nickname == user.nickname and hash(password) == user.password:
 				self.current_user = user
+				break
 
 	def register(self, nickname: str, password: str, age: int):
 		"""Метод регистрации нового пользователя"""
@@ -95,6 +96,7 @@ class UrTube:
 					sleep(1)
 				film.time_now = 0
 				print('Конец видео')
+				break
 
 
 
