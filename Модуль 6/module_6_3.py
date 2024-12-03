@@ -116,8 +116,8 @@ class PoisonousAnimal(Animal):
     """
     _DEGREE_OF_DANGER = 8
 
-    def __init__(self, speed):
-        super().__init__(speed)
+    #def __init__(self, speed):
+        #super().__init__(speed)
 
 
 class Duckbill(Bird, PoisonousAnimal, AquaticAnimal):  # Почему именно в таком порядке???
