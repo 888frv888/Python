@@ -75,8 +75,6 @@ class Bird(Animal):
     """
     beak = True  # beak: клюв
 
-    def __init__(self, speed):
-        super().__init__(speed)
 
     def lay_eggs(self) -> None:
         """
@@ -96,9 +94,6 @@ class AquaticAnimal(Animal):
     """
     _DEGREE_OF_DANGER = 3
 
-    def __init__(self, speed):
-        super().__init__(speed)
-
     def dive_in(self, dz) -> None:
         """
         Метод меняет координату Z конкретного экземпляра.
@@ -115,9 +110,6 @@ class PoisonousAnimal(Animal):
     Переопределен атрибут базового класса '_DEGREE_OF_DANGER'.
     """
     _DEGREE_OF_DANGER = 8
-
-    def __init__(self, speed):
-        super().__init__(speed)
 
 
 class Duckbill(Bird, PoisonousAnimal, AquaticAnimal):  # Почему именно в таком порядке???
