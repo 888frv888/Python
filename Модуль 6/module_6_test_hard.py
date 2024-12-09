@@ -7,10 +7,11 @@ class Figure:
 	default_side = 1
 
 	def __init__(self, *args):
-		self.__color = args[0]
+		self.__color = list(args[0])
 		self.__sides = [self.default_side] * self.sides_count
 		self.set_sides(*args[1:])
 		self.filled: bool = False
+
 
 	def get_color(self):
 		return list(self.__color)
@@ -31,23 +32,22 @@ class Figure:
 	def __is_valid_sides(self, *sides):
 		if not len(sides) == self.valid_sides:
 			return False
-		for element in sides:
+		for element in list(sides):
 			if not isinstance(element, int) and element > 0:
 				return False
 		return True
 
 	def get_sides(self):
-		return self.__sides
-
-	# def build_sides(self):
-	#     for count in range(self.sides_count):
-	#         self.__sides.append(self.default_side)
+		return list(self.__sides)
 
 	def set_sides(self, *new_sides):
 		if self.__is_valid_sides(*new_sides):
+			if self.sides_count == 12:
+				self.__sides = list(new_sides) * self.sides_count
+				return
 			self.__sides = list(new_sides)
-	# else:
-	# 	self.build_sides()
+		# else:
+		# 	self.__sides = [self.default_side] * self.sides_count
 
 
 class Circle(Figure):
@@ -56,10 +56,11 @@ class Circle(Figure):
 
 	def __init__(self, *args):
 		super().__init__(*args)
-		self.__radius = 0
+		self.__radius: float = self.get_sides()[0] / (2 * pi) # в переменной сохраняется ОШИБОЧНОЕ значение!!!
 
 	def get_square(self):
-		return pow(self.__sides, 2) / (4 * pi)
+		s = pi * self.__radius ** 2
+		return s
 
 
 class Triangle(Figure):
@@ -67,8 +68,10 @@ class Triangle(Figure):
 	valid_sides = 3
 
 	def get_square(self):
-		p = sum(self.__sides) / 2
-		s = pow((p * (p - self.__sides[0]) * (p - self.__sides[1]) * (p - self.__sides[2])), 0.5)
+		triangle_sides = self.get_sides()
+		p = sum(triangle_sides)
+		# p = sum(self.__sides) / 2
+		s = pow((p * (p - triangle_sides[0]) * (p - triangle_sides[1]) * (p - triangle_sides[2])), 0.5)
 		return s
 
 
@@ -78,25 +81,14 @@ class Cube(Figure):
 
 	def __init__(self, *args):
 		super().__init__(*args)
-		self.__sides = [] * self.sides_count
-
-	# def _Figure__is_valid_sides(self, *sides):
-	# 	if not len(sides) == self.valid_sides:
-	# 		return False
-	# 	for element in sides:
-	# 		if not isinstance(element, int) and element > 0:
-	# 			return False
-	# 	return True
 
 	def set_sides(self, *new_sides):
 		new_sides_list = list(new_sides)
 		if len(new_sides_list) == self.valid_sides:
-			for side in self.__sides:
-				side = int(new_sides)
+			super().set_sides(*new_sides_list)
 
 	def get_volume(self):
 		cube_side = self.get_sides()
-		print(*cube_side)
 		return pow(cube_side[0], 3)
 
 
@@ -118,3 +110,10 @@ if __name__ == '__main__':
 	print(len(circle1))
 	# Проверка объёма (куба):
 	print(cube1.get_volume())
+	# cube2 = Cube((100, 50, 10), 25, 60)
+	# tri1 = Triangle((100,50,40),100, 100, 100)
+	# tri2 = Triangle((100,50,40),100, 100)
+	# tri2.set_sides(50,50,50)
+	# print(tri2.get_square())
+	# print(circle1.get_square())
+	# c=1
