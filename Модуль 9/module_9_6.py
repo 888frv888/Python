@@ -1,4 +1,4 @@
-func_1(text):
+def all_variants(text):
 	for i in range(1, len(text)+1):
 		fin=len(text)-i+1
 		for j in range(fin):
@@ -6,5 +6,5 @@ func_1(text):
 			yield string
 
 if __name__ == "__main__":
- for i in func_1("abc"):
+ for i in all_variants("abc"):
 	 print(i)
