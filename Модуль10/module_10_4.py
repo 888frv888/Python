@@ -5,7 +5,7 @@ from queue import Queue
 
 
 class Guest(threading.Thread):
-	def __init_(self, name):
+	def __init__(self, name):
 		super().__init__()
 		self.name = name
 
