@@ -37,7 +37,7 @@
 #     записи символа. Соответственно для чтения и записи информации из/в файл(-f)
 #     потребуется другая кодировка - utf-8."""
 
-def custom_write(file_name, strings):
+def custom_write(file_name: str, strings: list[str]) -> dict:
     """Функция принимает параметрами имя файла и список строк.
     Производится запись строк в указанный файл. Каждая с новой строки.
     Функция возвращает словарь """
@@ -45,7 +45,7 @@ def custom_write(file_name, strings):
     file = open(file_name, "w", encoding="utf-8")
     for string in strings:
         str_position = file.tell()
-        file.write("".join((string, "\n")))
+        file.write("".join([string, "\n"]))
         strings_positions[(strings.index(string) + 1, str_position)] = string
     file.close()
     return strings_positions
