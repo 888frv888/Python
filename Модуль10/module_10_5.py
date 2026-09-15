@@ -35,7 +35,8 @@
 
 import multiprocessing
 import time
-from os import getcwd
+# import os
+# from os import getcwd
 
 
 def read_info(file_name):
@@ -51,10 +52,12 @@ def read_info(file_name):
 
 
 if __name__ == "__main__":
-	#file_name_list = [file_name for file_name in os.listdir(os.getcwd()) if file_name.startswith("file")]
-	file_name_list = [f'./file {number}.txt' for number in range(1, 5)]
+	# file_name_list = [file_name for file_name in os.listdir(os.getcwd()) if file_name.startswith("file")]
+	file_name_list = [f'file {number}.txt' for number in range(1, 5)]
 	start = time.perf_counter()
-	_ = [*map(read_info, file_name_list)]
+	#_ = [*map(read_info, file_name_list)]
+	for file in file_name_list:
+		read_info(file)
 	print(f"{time.perf_counter() - start} (линейный)")
 
 	print("#" * 50)
